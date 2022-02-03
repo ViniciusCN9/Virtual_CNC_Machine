@@ -1,17 +1,23 @@
 package com.controller.machines;
 
+import java.math.BigDecimal;
+
 public interface IMaquina {
 
-    void movimentarEixoX();
+    void movimentarEixoX(BigDecimal valor);
 
-    void movimentarEixoY();
+    void movimentarEixoY(BigDecimal valor);
 
-    void rotacaoArvore();
+    void movimentarEixoZ(BigDecimal valor);
+
+    void rotacaoArvore(int rotacao);
 
     void Refrigeracao();
 
-    void trocarFerramenta();
+    void trocarFerramenta(int ferramenta);
 
     void chamadaPontoTroca();
+
+    void definirZeroPeca();
 
 }

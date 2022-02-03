@@ -1,33 +1,52 @@
 package com.controller.machines;
 
-public class Fresa implements IMaquina{
-    @Override
-    public void movimentarEixoX() {
+import java.math.BigDecimal;
+
+public class Fresa extends Maquina {
+
+    BigDecimal posicaoXMaquina;
+    BigDecimal posicaoYMaquina;
+    BigDecimal posicaoZMaquina;
+
+    int nFerramentas;
+
+    public Fresa(BigDecimal posicaoXMaquina, BigDecimal posicaoYMaquina, BigDecimal posicaoZMaquina, int nFerramentas) {
+        this.posicaoXMaquina = posicaoXMaquina;
+        this.posicaoYMaquina = posicaoYMaquina;
+        this.posicaoZMaquina = posicaoZMaquina;
+        this.posicaoXAbsoluto = posicaoXMaquina;
+        this.posicaoYAbsoluto = posicaoYMaquina;
+        this.posicaoZAbsoluto = posicaoZMaquina;
+        this.nFerramentas = nFerramentas;
 
     }
 
-    @Override
-    public void movimentarEixoY() {
+    public BigDecimal getPosicaoXMaquina() {
+        return posicaoXMaquina;
+    }
 
+    public BigDecimal getPosicaoYMaquina() {
+        return posicaoYMaquina;
+    }
+
+    public BigDecimal getPosicaoZMaquina() {
+        return posicaoZMaquina;
     }
 
     @Override
-    public void rotacaoArvore() {
-
-    }
-
-    @Override
-    public void Refrigeracao() {
-
-    }
-
-    @Override
-    public void trocarFerramenta() {
-
+    public void trocarFerramenta(int ferramenta) {
+        if (ferramenta > this.nFerramentas) {
+            System.out.println("Número de ferramenta não encontrado");
+        } else {
+            super.trocarFerramenta(ferramenta);
+        }
     }
 
     @Override
     public void chamadaPontoTroca() {
-
+        this.posicaoXAbsoluto = this.posicaoXMaquina;
+        this.posicaoYAbsoluto = this.posicaoYMaquina;
+        this.posicaoZAbsoluto = this.posicaoZMaquina;
     }
 }
+
