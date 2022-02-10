@@ -13,5 +13,6 @@ public class Main {
         Maquina fresa = new Fresa(new BigDecimal(1000), new BigDecimal(1000), new BigDecimal(500), 15);
         Maquina torno = new Torno(new BigDecimal(500), new BigDecimal(300), 8);
 
+
     }
 }

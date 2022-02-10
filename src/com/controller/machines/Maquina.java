@@ -4,18 +4,20 @@ import java.math.BigDecimal;
 
 public abstract class Maquina implements IMaquina {
 
-    BigDecimal posicaoXRelativo = new BigDecimal(0);
-    BigDecimal posicaoYRelativo = new BigDecimal(0);
-    BigDecimal posicaoZRelativo = new BigDecimal(0);
-    BigDecimal posicaoXAbsoluto;
-    BigDecimal posicaoYAbsoluto;
-    BigDecimal posicaoZAbsoluto;
+    protected BigDecimal posicaoXRelativo = new BigDecimal(0);
+    protected BigDecimal posicaoYRelativo = new BigDecimal(0);
+    protected BigDecimal posicaoZRelativo = new BigDecimal(0);
+    protected BigDecimal posicaoXAbsoluto;
+    protected BigDecimal posicaoYAbsoluto;
+    protected BigDecimal posicaoZAbsoluto;
 
-    int rotacaoAtual = 0;
-    boolean estadoRefrigeracao = false;
+    protected int nFerramentas;
+    protected int ferramentaAtual = 0;
+
+    protected int rotacaoAtual = 0;
+    protected boolean estadoRefrigeracao = false;
 
 
-    int ferramentaAtual = 0;
 
     public int getRotacaoAtual() {
         return this.rotacaoAtual;
@@ -44,6 +46,16 @@ public abstract class Maquina implements IMaquina {
 
     @Override
     public void trocarFerramenta(int ferramenta) {
+        if (ferramenta > this.ferramentaAtual){
+            for (int i = this.ferramentaAtual; i < ferramenta; i++){
+                System.out.println("Ferramenta atual: " + i);
+            }
+        }
+        if (ferramenta < this.ferramentaAtual) {
+            for (int i = this.ferramentaAtual; i > ferramenta; i--) {
+                System.out.println("Ferramenta atual: " + i);
+            }
+        }
         this.ferramentaAtual = ferramenta;
         System.out.println("Ferramenta atual: " + this.ferramentaAtual);
     }

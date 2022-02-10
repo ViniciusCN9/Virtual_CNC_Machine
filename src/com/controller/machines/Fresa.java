@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 
 public class Fresa extends Maquina {
 
-    BigDecimal posicaoXMaquina;
-    BigDecimal posicaoYMaquina;
-    BigDecimal posicaoZMaquina;
+    private BigDecimal posicaoXMaquina;
+    private BigDecimal posicaoYMaquina;
+    private BigDecimal posicaoZMaquina;
 
-    int nFerramentas;
 
     public Fresa(BigDecimal posicaoXMaquina, BigDecimal posicaoYMaquina, BigDecimal posicaoZMaquina, int nFerramentas) {
         this.posicaoXMaquina = posicaoXMaquina;

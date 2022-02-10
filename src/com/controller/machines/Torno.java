@@ -4,10 +4,9 @@ import java.math.BigDecimal;
 
 public class Torno extends Maquina {
 
-    BigDecimal posicaoXMaquina;
-    BigDecimal posicaoYMaquina;
+    private BigDecimal posicaoXMaquina;
+    private BigDecimal posicaoYMaquina;
 
-    int nFerramentas;
 
     public Torno(BigDecimal posicaoXMaquina, BigDecimal posicaoYMaquina, int nFerramentas) {
         this.posicaoXMaquina = posicaoXMaquina;
