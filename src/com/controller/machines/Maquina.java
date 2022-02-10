@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public abstract class Maquina implements IMaquina {
 
+    // DADOS TNMG - VC = 130 metro/min  | F = 0.20 mm/revolução
+
     protected BigDecimal posicaoXRelativo = new BigDecimal(0);
     protected BigDecimal posicaoYRelativo = new BigDecimal(0);
     protected BigDecimal posicaoZRelativo = new BigDecimal(0);
@@ -17,7 +19,7 @@ public abstract class Maquina implements IMaquina {
     protected int rotacaoAtual = 0;
     protected boolean estadoRefrigeracao = false;
 
-
+    private double AVANCO_RAPIDO = 500; // 500 mm/s ou 30 metro/min
 
     public int getRotacaoAtual() {
         return this.rotacaoAtual;
@@ -66,11 +68,27 @@ public abstract class Maquina implements IMaquina {
     }
 
     @Override
+    public void movimentarEixoX(BigDecimal valor, double avanco) {
+        this.posicaoXAbsoluto = this.posicaoXAbsoluto.add(valor);
+    }
+
+    @Override
     public void movimentarEixoY(BigDecimal valor) {
         this.posicaoYAbsoluto = this.posicaoYAbsoluto.add(valor);
     }
 
+    @Override
+    public void movimentarEixoY(BigDecimal valor, double avanco) {
+        this.posicaoYAbsoluto = this.posicaoYAbsoluto.add(valor);
+    }
+
+    @Override
     public void movimentarEixoZ(BigDecimal valor) {
+        this.posicaoZAbsoluto = this.posicaoZAbsoluto.add(valor);
+    }
+
+    @Override
+    public void movimentarEixoZ(BigDecimal valor, double avanco) {
         this.posicaoZAbsoluto = this.posicaoZAbsoluto.add(valor);
     }
 
