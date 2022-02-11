@@ -1,24 +1,25 @@
 package com.controller.machines;
 
-import java.math.BigDecimal;
 
 public class Torno extends Maquina {
 
-    private BigDecimal posicaoXMaquina;
-    private BigDecimal posicaoYMaquina;
+    private double posicaoXMaquina;
+    private double posicaoYMaquina;
 
 
-    public Torno(BigDecimal posicaoXMaquina, BigDecimal posicaoYMaquina, int nFerramentas) {
+    public Torno(double posicaoXMaquina, double posicaoYMaquina, int nFerramentas) {
         this.posicaoXMaquina = posicaoXMaquina;
         this.posicaoYMaquina = posicaoYMaquina;
+        this.posicaoXAbsoluto = posicaoXMaquina;
+        this.posicaoYAbsoluto = posicaoYMaquina;
         this.nFerramentas = nFerramentas;
     }
 
-    public BigDecimal getPosicaoXMaquina() {
+    public double getPosicaoXMaquina() {
         return posicaoXMaquina;
     }
 
-    public BigDecimal getPosicaoYMaquina() {
+    public double getPosicaoYMaquina() {
         return posicaoYMaquina;
     }
 
@@ -29,12 +30,6 @@ public class Torno extends Maquina {
         } else {
             super.trocarFerramenta(ferramenta);
         }
-    }
-
-    @Override
-    public void chamadaPontoTroca() {
-        this.posicaoXAbsoluto = this.posicaoXMaquina;
-        this.posicaoYAbsoluto = this.posicaoYMaquina;
     }
 
 }

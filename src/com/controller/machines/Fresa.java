@@ -1,15 +1,14 @@
 package com.controller.machines;
 
-import java.math.BigDecimal;
 
 public class Fresa extends Maquina {
 
-    private BigDecimal posicaoXMaquina;
-    private BigDecimal posicaoYMaquina;
-    private BigDecimal posicaoZMaquina;
+    private double posicaoXMaquina;
+    private double posicaoYMaquina;
+    private double posicaoZMaquina;
 
 
-    public Fresa(BigDecimal posicaoXMaquina, BigDecimal posicaoYMaquina, BigDecimal posicaoZMaquina, int nFerramentas) {
+    public Fresa(double posicaoXMaquina, double posicaoYMaquina, double posicaoZMaquina, int nFerramentas) {
         this.posicaoXMaquina = posicaoXMaquina;
         this.posicaoYMaquina = posicaoYMaquina;
         this.posicaoZMaquina = posicaoZMaquina;
@@ -20,15 +19,15 @@ public class Fresa extends Maquina {
 
     }
 
-    public BigDecimal getPosicaoXMaquina() {
+    public double getPosicaoXMaquina() {
         return posicaoXMaquina;
     }
 
-    public BigDecimal getPosicaoYMaquina() {
+    public double getPosicaoYMaquina() {
         return posicaoYMaquina;
     }
 
-    public BigDecimal getPosicaoZMaquina() {
+    public double getPosicaoZMaquina() {
         return posicaoZMaquina;
     }
 
@@ -43,9 +42,9 @@ public class Fresa extends Maquina {
 
     @Override
     public void chamadaPontoTroca() {
-        this.posicaoXAbsoluto = this.posicaoXMaquina;
-        this.posicaoYAbsoluto = this.posicaoYMaquina;
-        this.posicaoZAbsoluto = this.posicaoZMaquina;
+        movimentarEixoX(this.posicaoXAbsoluto, this.posicaoXMaquina);
+        movimentarEixoY(this.posicaoYAbsoluto, this.posicaoYMaquina);
+        movimentarEixoZ(this.posicaoYAbsoluto, this.posicaoZMaquina);
     }
 }
 

@@ -1,17 +1,16 @@
 package com.controller.machines;
 
-import java.math.BigDecimal;
 
 public abstract class Maquina implements IMaquina {
 
     // DADOS TNMG - VC = 130 metro/min  | F = 0.20 mm/revolução
 
-    protected BigDecimal posicaoXRelativo = new BigDecimal(0);
-    protected BigDecimal posicaoYRelativo = new BigDecimal(0);
-    protected BigDecimal posicaoZRelativo = new BigDecimal(0);
-    protected BigDecimal posicaoXAbsoluto;
-    protected BigDecimal posicaoYAbsoluto;
-    protected BigDecimal posicaoZAbsoluto;
+    protected double posicaoXRelativo = 0d;
+    protected double posicaoYRelativo = 0d;
+    protected double posicaoZRelativo = 0d;
+    protected double posicaoXAbsoluto;
+    protected double posicaoYAbsoluto;
+    protected double posicaoZAbsoluto;
 
     protected int nFerramentas;
     protected int ferramentaAtual = 0;
@@ -48,8 +47,8 @@ public abstract class Maquina implements IMaquina {
 
     @Override
     public void trocarFerramenta(int ferramenta) {
-        if (ferramenta > this.ferramentaAtual){
-            for (int i = this.ferramentaAtual; i < ferramenta; i++){
+        if (ferramenta > this.ferramentaAtual) {
+            for (int i = this.ferramentaAtual; i < ferramenta; i++) {
                 System.out.println("Ferramenta atual: " + i);
             }
         }
@@ -62,45 +61,43 @@ public abstract class Maquina implements IMaquina {
         System.out.println("Ferramenta atual: " + this.ferramentaAtual);
     }
 
-    @Override
-    public void movimentarEixoX(BigDecimal valor) {
-        this.posicaoXAbsoluto = this.posicaoXAbsoluto.add(valor);
+    public void movimentarEixoX(double valor, double avanco) {
+        movimentarEixo(this.posicaoXAbsoluto, valor, avanco);
     }
 
-    @Override
-    public void movimentarEixoX(BigDecimal valor, double avanco) {
-        this.posicaoXAbsoluto = this.posicaoXAbsoluto.add(valor);
+
+    public void movimentarEixoY(double valor, double avanco) {
+        movimentarEixo(this.posicaoYAbsoluto, valor, avanco);
     }
 
-    @Override
-    public void movimentarEixoY(BigDecimal valor) {
-        this.posicaoYAbsoluto = this.posicaoYAbsoluto.add(valor);
+    public void movimentarEixoZ(double valor, double avanco) {
+        movimentarEixo(this.posicaoZAbsoluto, valor, avanco);
     }
 
-    @Override
-    public void movimentarEixoY(BigDecimal valor, double avanco) {
-        this.posicaoYAbsoluto = this.posicaoYAbsoluto.add(valor);
-    }
-
-    @Override
-    public void movimentarEixoZ(BigDecimal valor) {
-        this.posicaoZAbsoluto = this.posicaoZAbsoluto.add(valor);
-    }
-
-    @Override
-    public void movimentarEixoZ(BigDecimal valor, double avanco) {
-        this.posicaoZAbsoluto = this.posicaoZAbsoluto.add(valor);
-    }
-
-    @Override
-    public void chamadaPontoTroca() {
-
-    }
+    public void chamadaPontoTroca() {}
 
     @Override
     public void definirZeroPeca() {
         this.posicaoXRelativo = this.posicaoXAbsoluto;
         this.posicaoYRelativo = this.posicaoYAbsoluto;
         this.posicaoZRelativo = this.posicaoZAbsoluto;
+    }
+
+    @Override
+    public void movimentarEixo(double eixo, double valor, double avanco) {
+        if (valor < eixo) {
+            for (double i = eixo; i > valor; i--) {
+                eixo = i;
+                System.out.println(eixo);
+            }
+        }
+        if (valor > eixo) {
+            for (double i = eixo; i < valor; i++) {
+                eixo = i;
+                System.out.println(eixo);
+            }
+        }
+        eixo = valor;
+        System.out.println(eixo);
     }
 }
